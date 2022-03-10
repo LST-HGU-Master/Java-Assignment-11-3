@@ -1,14 +1,75 @@
-# Autograding Example: Java
-This example project is written in Java, and tested with Gradle/JUnit.
+# 課題11-3: オブジェクトクラス
 
-### The assignment
-The tests are currently failing because of an output mismatch. Fixing the `System.out.println` in the main method will make the tests green.
+### 課題の説明
+すべてのクラスはオブジェクトクラスを祖先にもち、toString()クラスとequals()クラスは宣言なしに利用できる。
+下記のFarmerクラスを作成したが、toString()とequals()が期待通りに動作しない。
+そこで期待する実行例になるように、toString()とequals()をオーバーライドしなさい。
 
-### Setup command
-N/A
+### Farmer.java
+```java
+public class Farmer
+{
+    String name;
+    int hp;
 
-### Run command
-`gradle test`
+    Farmer(String name, int hp){
+        this.name = name;
+        this.hp=hp;
+    }
 
-### Notes
-- The JDK is installed on GitHub Actions machines, so you're also able to directly invoke `javac`, `java`, or any other CLI command included in the JDK. 
+    public void run() {
+        System.out.println(this.name + "は逃げ出した！");
+    }
+}
+```
+
+### ProgB3.java（提出不要）
+```java
+public class ProgB3
+{
+    public static void main(String arg[]){ 
+        //３つのFarmerクラスのインスタンスの宣言と代入；
+        Farmer fm1 = new Farmer("農民「山田」", 20);
+        Farmer fm2 = new Farmer("農民「山本」", 28);
+        Farmer fm3 = new Farmer("農民「山本」", 20);
+        Farmer fm4 = new Farmer("農民「山本」", 28);
+        // toStringメソッドを使う
+        System.out.println(fm1.toString());
+        System.out.println(fm2.toString());
+        System.out.println(fm3.toString());
+        System.out.println(fm4.toString());
+        // equalsメソッドを使う
+        System.out.print("fm2とfm1は");
+        if(fm2.equals(fm1)) System.out.println("同じ人です。");
+        else                System.out.println("違う人です。");
+        System.out.print("fm2とfm3は");
+        if(fm2.equals(fm3)) System.out.println("同じ人です。");
+        else                System.out.println("違う人です。");
+        System.out.print("fm2とfm4は");
+        if(fm2.equals(fm4)) System.out.println("同じ人です。");
+        else                System.out.println("違う人です。");
+    }
+}
+```
+
+### 変更前の実行例
+```
+Farmer@6504e3b2
+Farmer@379619aa
+Farmer@cac736f
+Farmer@5e265ba4
+fm2とfm1は違う人です。
+fm2とfm3は違う人です。
+fm2とfm4は違う人です。
+```
+
+### 変更後の実行例
+```
+Name：農民「山田」/HP:20
+Name：農民「山本」/HP:28
+Name：農民「山本」/HP:20
+Name：農民「山本」/HP:28
+fm2とfm1は違う人です。
+fm2とfm3は違う人です。
+fm2とfm4は同じ人です。
+```
