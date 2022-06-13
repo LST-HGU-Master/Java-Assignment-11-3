@@ -3,9 +3,9 @@
 ### 課題の説明
 すべてのクラスはオブジェクトクラスを祖先にもち、toString()クラスとequals()クラスは宣言なしに利用できる。
 下記のFarmerクラスを作成したが、toString()とequals()が期待通りに動作しない。
-そこで期待する実行例になるように、toString()とequals()をオーバーライドしなさい。
+そこで「変更後の実行例」になるように、toString()とequals()をオーバーライドしなさい。
 
-### Farmer.java
+### Farmer.java（toString()とequals()をオーバーライドする）
 ```java
 public class Farmer
 {
